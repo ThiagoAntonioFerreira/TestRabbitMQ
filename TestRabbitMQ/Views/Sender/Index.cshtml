@@ -1,6 +1,21 @@
-﻿@page
+﻿@{
+    Layout = "_Layout";
+}
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
+
+
+<div class="row">
+    <form method="post">
+        <div class="col-sm-2">Valor</div>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" />
+        </div>
+        <div class="col-sm-2">
+            <button id="btn-send" class="btn btn-primary">Send</button>
+        </div>
+    </form>
+</div>

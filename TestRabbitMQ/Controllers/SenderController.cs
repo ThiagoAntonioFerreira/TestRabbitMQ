@@ -57,7 +57,6 @@ namespace TestRabbitMQ.Controllers
             catch (Exception ex)
             {
                 return await Task.Run(() => View("Index"));
-
             }
         }
     }

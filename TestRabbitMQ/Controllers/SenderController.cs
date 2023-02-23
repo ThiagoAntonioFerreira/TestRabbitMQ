@@ -20,7 +20,7 @@ namespace TestRabbitMQ.Controllers
         public async Task<IActionResult> Sender()
         {
             string connectionString = "amqp://thiago:thiago@3.85.129.153:5672";
-            string queueName = "teste1";
+            string queueName = "ImportFiles";
 
             MessageInputModel messageInput = new MessageInputModel{
                 Content = "Teste",

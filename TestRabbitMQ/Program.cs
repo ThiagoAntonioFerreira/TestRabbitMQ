@@ -1,7 +1,20 @@
+using TestRabbitMQ.Consumers;
+using TestRabbitMQ.Options;
+using TestRabbitMQ.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+//dotnet add package Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation --version 7.0.3
+builder.Services.AddRazorPages()
+.AddRazorRuntimeCompilation();
+
+builder.Services.Configure<RabbitMqConfiguration>(builder.Configuration.GetSection("RabbitMqConfig"));
+builder.Services.AddScoped<INotificationService, NotificationService>();
+builder.Services.AddHostedService<ProcessMessageConsumer>();
+
 
 var app = builder.Build();
 
@@ -21,6 +34,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
 
 app.MapControllerRoute(
     name: "default",

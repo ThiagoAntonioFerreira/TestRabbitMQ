@@ -9,13 +9,15 @@
 
 
 <div class="row">
-    <form method="post">
-        <div class="col-sm-2">Valor</div>
+    <form method="post" asp-action="Post">
+        <div class="col-sm-2">Value</div>
+
         <div class="col-sm-2">
             <input type="text" class="form-control" />
         </div>
+
         <div class="col-sm-2">
-            <button id="btn-send" class="btn btn-primary">Send</button>
+            <button id="btn-send" type="submit" class="btn btn-primary">Send</button>
         </div>
     </form>
 </div>

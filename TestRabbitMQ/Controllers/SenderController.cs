@@ -19,7 +19,7 @@ namespace TestRabbitMQ.Controllers
         [Route("sender")]
         public async Task<IActionResult> Sender()
         {
-            string connectionString = "amqp://thiago:thiago@3.85.129.153:5672";
+            string connectionString = "localhost";
             string queueName = "ImportFiles";
 
             MessageInputModel messageInput = new MessageInputModel{

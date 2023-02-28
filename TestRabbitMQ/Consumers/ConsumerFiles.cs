@@ -9,13 +9,13 @@ using TestRabbitMQ.Services;
 
 namespace TestRabbitMQ.Consumers
 {
-    public class ProcessMessageConsumer : BackgroundService
+    public class ConsumerFiles : BackgroundService
     {
         private readonly RabbitMqConfiguration _configuration;
         private readonly IConnection _connection;
         private readonly IModel _channel;
         private readonly IServiceProvider _serviceProvider;
-        public ProcessMessageConsumer(IOptions<RabbitMqConfiguration> option, IServiceProvider serviceProvider)
+        public ConsumerFiles(IOptions<RabbitMqConfiguration> option, IServiceProvider serviceProvider)
         {
             _configuration = option.Value;
             _serviceProvider = serviceProvider;

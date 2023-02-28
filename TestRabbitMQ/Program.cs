@@ -13,7 +13,7 @@ builder.Services.AddRazorPages()
 
 builder.Services.Configure<RabbitMqConfiguration>(builder.Configuration.GetSection("RabbitMqConfig"));
 builder.Services.AddScoped<INotificationService, NotificationService>();
-builder.Services.AddHostedService<ProcessMessageConsumer>();
+builder.Services.AddHostedService<ConsumerFiles>();
 
 
 var app = builder.Build();

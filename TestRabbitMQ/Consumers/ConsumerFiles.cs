@@ -46,7 +46,7 @@ namespace TestRabbitMQ.Consumers
             {
                 var contentArray = eventArgs.Body.ToArray();
                 var contentString = Encoding.UTF8.GetString(contentArray);
-                var message = JsonConvert.DeserializeObject<MessageInputModel>(contentString);
+                var message = JsonConvert.DeserializeObject<MessageModel>(contentString);
 
                 NotifyUser(message);
 
@@ -58,7 +58,7 @@ namespace TestRabbitMQ.Consumers
             return Task.CompletedTask;
         }
 
-        public void NotifyUser(MessageInputModel message)
+        public void NotifyUser(MessageModel message)
         {
             using (var scope = _serviceProvider.CreateScope())
             {

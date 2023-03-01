@@ -22,7 +22,7 @@ namespace TestRabbitMQ.Controllers
             string connectionString = "localhost";
             string queueName = "ImportFiles";
 
-            MessageInputModel messageInput = new MessageInputModel{
+            MessageModel messageInput = new MessageModel{
                 Content = "Teste",
                 CreatedAt = DateTime.Now,
                 FromId = 1,

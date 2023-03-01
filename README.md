@@ -25,3 +25,51 @@ After create my consumer I need to registry it in my program.cs or startup.cs
 builder.Services.Configure<RabbitMqConfiguration>(builder.Configuration.GetSection("RabbitMqConfig"));
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddHostedService<ConsumerFiles>();
+```
+
+To send a message to a queue in RabbitMQ I created a controller and a page that contain a button. In this button I created this code above:
+
+```c#
+//Define my connection string. 
+string connectionString = "localhost";
+string queueName = "ImportFiles";
+
+MessageModel messageInput = new MessageModel{
+    Content = "Teste",
+    CreatedAt = DateTime.Now,
+    FromId = 1,
+    ToId = 2,
+};
+try
+{
+    //Create a connection com rabbitmq
+    var factory = new ConnectionFactory()
+    {
+        Uri = new Uri(connectionString)
+    };
+
+
+    using var connection = factory.CreateConnection();
+    using var channel = connection.CreateModel();
+
+    channel.QueueDeclare(queue: queueName,
+                            durable: false,
+                            exclusive: false,
+                            autoDelete: false,
+                            arguments: null);
+
+    var stringfiedMessage = JsonConvert.SerializeObject(messageInput);
+    channel.BasicPublish(exchange: "",
+                             routingKey: queueName,
+                             basicProperties: null,
+                             body: Encoding.UTF8.GetBytes(stringfiedMessage));
+
+    return await Task.Run(() => View("Index"));
+
+}
+catch (Exception ex)
+{
+    return await Task.Run(() => View("Index"));
+}
+            
+```            

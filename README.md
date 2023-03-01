@@ -1,9 +1,17 @@
 # TestRabbitMQ
 
+What is RabbitMQ? You can find more information in https://www.rabbitmq.com/
+
 Create an example using RabbitMQ
 
 
 I need to create a system that I need process files. The users upload files, then I put them in a queue. I use rabbit to process these files and give to users a response.
+
+To install rabbitmq in you project you have to run this command
+
+```bash
+dotnet add package RabbitMQ.Client --version 6.4.0
+```
 
 In this folder (Consumers) I will create my consumers. In this case I need create only one consumer, that call ConsumerFiles.cs.
 
